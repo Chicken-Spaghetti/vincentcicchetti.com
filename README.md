@@ -1,2 +1,3 @@
-# vincentcicchetti.com
-Personal site for Vincent Cicchetti — skills, trades, and services
+Personal site for Vincent Cicchetti.
+
+GitHub Pages + custom domain vincentcicchetti.com.
