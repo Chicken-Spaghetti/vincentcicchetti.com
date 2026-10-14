@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Recipe Box (working title) — In testing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1c1917; --muted:#57534e; --paper:#faf7f2; --card:#fff; --line:#e7e0d6; --accent:#1f4e46; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }
+    a { color: var(--accent); }
+    header { border-bottom:1px solid var(--line); }
+    .nav { max-width:1040px; margin:0 auto; padding:14px 20px; }
+    .brand { font-weight:600; text-decoration:none; color:var(--ink); }
+    main { max-width:1040px; margin:0 auto; padding:28px 20px 80px; }
+    h1 { font-family:"Source Serif 4",Georgia,serif; font-size:clamp(2rem,4vw,3.1rem); line-height:1.15; margin:24px 0 8px; }
+    .badge { display:inline-block; background:var(--accent); color:#fff; font-size:.8rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
+    .tag { font-size:1.15rem; color:var(--muted); margin:0 0 14px; }
+    section { padding:42px 0 8px; border-top:1px solid var(--line); margin-top:28px; }
+    h2 { font-family:"Source Serif 4",Georgia,serif; font-size:1.7rem; margin:0 0 16px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px; }
+    .card h3 { margin:0 0 8px; font-size:1.15rem; }
+    .muted { color:var(--muted); }
+    ul.clean { padding-left:18px; }
+    #app-root { min-height:280px; border:2px dashed var(--line); border-radius:10px; background:var(--card); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:var(--muted); }
+    footer { color:var(--muted); font-size:.9rem; padding-top:28px; }
+  </style>
+</head>
+<body>
+  <header><div class="nav"><a class="brand" href="/">Vincent Cicchetti</a></div></header>
+  <main>
+    <span class="badge">In testing</span>
+    <h1>Recipe Box <span class="muted" style="font-size:.5em">(working title)</span></h1>
+    <p class="tag">Your recipes, kept by your own AI. Coming soon.</p>
+    <p>This is a private test page for a recipe app that is still being built. Nothing here is live yet.</p>
+
+    <section>
+      <h2>How it will work</h2>
+      <div class="grid">
+        <div class="card"><h3>Bring your own AI</h3><p>Connect the AI you already use (Claude, ChatGPT, or Grok) to Recipe Box as an MCP connector.</p></div>
+        <div class="card"><h3>Save &amp; organize</h3><p>Ask your AI to save, tag, and organize your personal recipes.</p></div>
+        <div class="card"><h3>Scale &amp; calculate</h3><p>Scale servings up or down and get nutrition numbers calculated from USDA data.</p></div>
+        <div class="card"><h3>See &amp; edit</h3><p>A web app and an Android app let you see and edit everything your AI did.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Plans</h2>
+      <ul class="clean">
+        <li>No free tier. Paid plans only; pricing to be announced.</li>
+        <li>7-day free trial of the lowest tier.</li>
+        <li>A payment method is required up front to start the trial.</li>
+        <li>During the trial: up to 25 saved recipes and a daily limit on nutrition lookups.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>App preview</h2>
+      <div id="app-root">The app interface will appear here during testing.</div>
+    </section>
+
+    <footer>Test page · not yet public · <a href="/">vincentcicchetti.com</a></footer>
+  </main>
+</body>
+</html>
