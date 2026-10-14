@@ -7,64 +7,151 @@
   <title>Recipe Box (working title) — In testing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#1c1917; --muted:#57534e; --paper:#faf7f2; --card:#fff; --line:#e7e0d6; --accent:#1f4e46; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family:"Source Sans 3",system-ui,sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }
-    a { color: var(--accent); }
-    header { border-bottom:1px solid var(--line); }
-    .nav { max-width:1040px; margin:0 auto; padding:14px 20px; }
-    .brand { font-weight:600; text-decoration:none; color:var(--ink); }
-    main { max-width:1040px; margin:0 auto; padding:28px 20px 80px; }
-    h1 { font-family:"Source Serif 4",Georgia,serif; font-size:clamp(2rem,4vw,3.1rem); line-height:1.15; margin:24px 0 8px; }
-    .badge { display:inline-block; background:var(--accent); color:#fff; font-size:.8rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
-    .tag { font-size:1.15rem; color:var(--muted); margin:0 0 14px; }
-    section { padding:42px 0 8px; border-top:1px solid var(--line); margin-top:28px; }
-    h2 { font-family:"Source Serif 4",Georgia,serif; font-size:1.7rem; margin:0 0 16px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px; }
-    .card h3 { margin:0 0 8px; font-size:1.15rem; }
-    .muted { color:var(--muted); }
-    ul.clean { padding-left:18px; }
-    #app-root { min-height:280px; border:2px dashed var(--line); border-radius:10px; background:var(--card); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:var(--muted); }
-    footer { color:var(--muted); font-size:.9rem; padding-top:28px; }
+    :root { --ink:#2b2420; --muted:#6f655e; --bg:#fff; --soft:#fbf6f1; --line:#efe6dd; --tomato:#d9482b; --saffron:#f2a541; --basil:#4a7c59; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Nunito Sans",system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.55; }
+    h1,h2,h3 { font-family:"Lora",Georgia,serif; line-height:1.2; }
+    .topbar { position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); box-shadow:0 1px 6px rgba(0,0,0,.04); }
+    .topbar .in { max-width:1120px; margin:0 auto; padding:12px 20px; display:flex; gap:16px; align-items:center; }
+    .logo { font-family:"Lora",serif; font-weight:700; font-size:1.3rem; color:var(--tomato); white-space:nowrap; }
+    .logo small { font-family:"Nunito Sans",sans-serif; font-weight:600; font-size:.7rem; color:var(--muted); margin-left:4px; }
+    .search { flex:1; display:flex; align-items:center; gap:8px; background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 16px; }
+    .search input { border:0; background:transparent; outline:none; width:100%; font:inherit; color:var(--muted); }
+    .pill { background:var(--saffron); color:#3a2a10; font-weight:800; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; padding:4px 10px; border-radius:999px; white-space:nowrap; }
+    main { max-width:1120px; margin:0 auto; padding:24px 20px 80px; }
+    .hero { background:linear-gradient(120deg,#fff4ea,#fde6d8); border-radius:18px; padding:32px; margin-bottom:32px; }
+    .hero h1 { font-size:clamp(1.8rem,4vw,2.7rem); margin:8px 0; }
+    .hero p { color:var(--muted); max-width:640px; margin:0; font-size:1.08rem; }
+    h2 { font-size:1.6rem; margin:40px 0 6px; }
+    .note { font-size:.8rem; font-weight:700; color:var(--tomato); text-transform:uppercase; letter-spacing:.05em; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; margin-top:14px; }
+    .rc { border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; transition:box-shadow .2s; }
+    .rc:hover { box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    .ph { height:140px; display:flex; align-items:center; justify-content:center; font-size:3.4rem; }
+    .rc .b { padding:12px 14px 16px; }
+    .rc h3 { font-size:1.08rem; margin:0 0 4px; }
+    .meta { color:var(--muted); font-size:.85rem; }
+    .stars { color:var(--saffron); letter-spacing:1px; }
+    .detail { display:grid; grid-template-columns:1fr 300px; gap:28px; margin-top:16px; border:1px solid var(--line); border-radius:18px; padding:24px; }
+    .detail .ph { height:220px; border-radius:12px; font-size:5rem; }
+    .scaler { display:inline-flex; align-items:center; gap:10px; background:var(--soft); border-radius:999px; padding:6px 8px; margin:14px 0; }
+    .scaler button { width:32px; height:32px; border-radius:50%; border:0; background:var(--tomato); color:#fff; font-size:1.1rem; cursor:pointer; }
+    ul.ing { padding-left:20px; } ul.ing li { margin:4px 0; }
+    ol.steps { padding-left:20px; } ol.steps li { margin:8px 0; }
+    .nf { border:2px solid #111; padding:10px 12px; font-family:Helvetica,Arial,sans-serif; background:#fff; align-self:start; }
+    .nf h3 { font-family:Helvetica,Arial,sans-serif; font-weight:900; font-size:1.7rem; margin:0; }
+    .nf .r { display:flex; justify-content:space-between; border-top:1px solid #111; padding:3px 0; font-size:.9rem; }
+    .nf .thick { border-top:8px solid #111; } .nf .med { border-top:4px solid #111; }
+    .nf .ind { padding-left:14px; }
+    .nf .ex { font-size:.72rem; color:var(--tomato); font-weight:700; margin-top:6px; }
+    .how { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:14px; }
+    .step { background:var(--soft); border-radius:14px; padding:18px; }
+    .step .n { width:30px; height:30px; border-radius:50%; background:var(--basil); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; margin-bottom:8px; }
+    .step h3 { margin:0 0 6px; font-size:1.1rem; }
+    .trial { background:var(--basil); color:#fff; border-radius:18px; padding:26px; margin-top:40px; }
+    .trial h2 { margin:0 0 10px; color:#fff; }
+    .trial ul { margin:0; padding-left:20px; }
+    footer { text-align:center; color:var(--muted); font-size:.85rem; margin-top:40px; }
+    @media (max-width:760px){ .detail{grid-template-columns:1fr;} .topbar .in{flex-wrap:wrap;} .search{order:3; flex-basis:100%;} .hero{padding:22px;} }
   </style>
 </head>
 <body>
-  <header><div class="nav"><a class="brand" href="/">Vincent Cicchetti</a></div></header>
+  <div class="topbar"><div class="in">
+    <div class="logo">🍅 Recipe Box<small>(working title)</small></div>
+    <div class="search" role="search" aria-label="Search (preview only)">🔍 <input type="text" placeholder="Search your recipes… (preview, not functional)" disabled></div>
+    <span class="pill">In testing</span>
+  </div></div>
+
   <main>
-    <span class="badge">In testing</span>
-    <h1>Recipe Box <span class="muted" style="font-size:.5em">(working title)</span></h1>
-    <p class="tag">Your recipes, kept by your own AI. Coming soon.</p>
-    <p>This is a private test page for a recipe app that is still being built. Nothing here is live yet.</p>
+    <div class="hero">
+      <span class="pill">Coming soon</span>
+      <h1>Your recipes, kept by your own AI.</h1>
+      <p>Save, organize, scale, and get nutrition facts for your personal recipes — just by asking the AI you already use. This is a private test page; nothing here is live yet.</p>
+    </div>
 
-    <section>
-      <h2>How it will work</h2>
-      <div class="grid">
-        <div class="card"><h3>Bring your own AI</h3><p>Connect the AI you already use (Claude, ChatGPT, or Grok) to Recipe Box as an MCP connector.</p></div>
-        <div class="card"><h3>Save &amp; organize</h3><p>Ask your AI to save, tag, and organize your personal recipes.</p></div>
-        <div class="card"><h3>Scale &amp; calculate</h3><p>Scale servings up or down and get nutrition numbers calculated from USDA data.</p></div>
-        <div class="card"><h3>See &amp; edit</h3><p>A web app and an Android app let you see and edit everything your AI did.</p></div>
+    <h2>Your recipes</h2>
+    <div class="note">Sample data — for preview only</div>
+    <div class="cards">
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#ffd9b8,#f7a072)">🍝</div><div class="b"><h3>Weeknight Garlic Pasta</h3><div class="meta"><span class="stars">★★★★★</span> · 25 min · Dinner</div></div></div>
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#d8f0c8,#9cc98a)">🥗</div><div class="b"><h3>Lemon Chickpea Salad</h3><div class="meta"><span class="stars">★★★★☆</span> · 15 min · Lunch</div></div></div>
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#fde7a8,#f2c14e)">🥞</div><div class="b"><h3>Fluffy Buttermilk Pancakes</h3><div class="meta"><span class="stars">★★★★★</span> · 30 min · Breakfast</div></div></div>
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#f9c6c0,#e0705f)">🍲</div><div class="b"><h3>Slow-Cooker Chili</h3><div class="meta"><span class="stars">★★★★☆</span> · 6 hr · Dinner</div></div></div>
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#e8d7f5,#b49ad6)">🍪</div><div class="b"><h3>Brown Butter Cookies</h3><div class="meta"><span class="stars">★★★★★</span> · 40 min · Dessert</div></div></div>
+      <div class="rc"><div class="ph" style="background:linear-gradient(135deg,#cfe9f2,#7fb8cc)">🐟</div><div class="b"><h3>Sheet-Pan Salmon</h3><div class="meta"><span class="stars">★★★★☆</span> · 20 min · Dinner</div></div></div>
+    </div>
+
+    <h2>Recipe preview</h2>
+    <div class="note">Sample recipe — example data</div>
+    <div class="detail">
+      <div>
+        <div class="ph" style="background:linear-gradient(135deg,#ffd9b8,#f7a072)">🍝</div>
+        <h3 style="font-size:1.6rem;margin:16px 0 4px">Weeknight Garlic Pasta</h3>
+        <div class="meta">Prep 5 min · Cook 20 min · Saved by your AI</div>
+        <div class="scaler"><button type="button" onclick="scale(-1)" aria-label="Fewer servings">−</button><strong><span id="sv">4</span> servings</strong><button type="button" onclick="scale(1)" aria-label="More servings">+</button></div>
+        <h3>Ingredients</h3>
+        <ul class="ing" id="ing">
+          <li><span data-q="12">12</span> oz spaghetti</li>
+          <li><span data-q="6">6</span> cloves garlic, sliced</li>
+          <li><span data-q="0.33">0.33</span> cup olive oil</li>
+          <li><span data-q="0.5">0.5</span> tsp red pepper flakes</li>
+          <li><span data-q="0.5">0.5</span> cup grated Parmesan</li>
+          <li><span data-q="0.25">0.25</span> cup chopped parsley</li>
+        </ul>
+        <h3>Steps</h3>
+        <ol class="steps">
+          <li>Boil the spaghetti in well-salted water until al dente. Save 1 cup of pasta water.</li>
+          <li>Meanwhile, warm the olive oil and garlic over medium-low heat until golden, about 5 minutes. Add pepper flakes.</li>
+          <li>Toss the drained pasta in the pan with a splash of pasta water.</li>
+          <li>Stir in Parmesan and parsley. Loosen with more pasta water and serve.</li>
+        </ol>
       </div>
-    </section>
+      <div class="nf" aria-label="Nutrition facts (example data)">
+        <h3>Nutrition Facts</h3>
+        <div style="font-size:.85rem">Servings: <span id="sv2">4</span></div>
+        <div class="r thick"><strong>Serving size</strong><span>1 plate</span></div>
+        <div class="r med" style="font-size:1.4rem"><strong>Calories</strong><strong>540</strong></div>
+        <div class="r"><span><strong>Total Fat</strong> 22g</span><span>28%</span></div>
+        <div class="r ind"><span>Saturated Fat 4.5g</span><span>23%</span></div>
+        <div class="r"><span><strong>Sodium</strong> 310mg</span><span>13%</span></div>
+        <div class="r"><span><strong>Total Carbohydrate</strong> 68g</span><span>25%</span></div>
+        <div class="r ind"><span>Dietary Fiber 3g</span><span>11%</span></div>
+        <div class="r"><span><strong>Protein</strong> 17g</span><span></span></div>
+        <div class="r thick" style="font-size:.75rem">Values will be calculated from USDA FoodData Central.</div>
+        <div class="ex">EXAMPLE DATA — not real nutrition values</div>
+      </div>
+    </div>
 
-    <section>
-      <h2>Plans</h2>
-      <ul class="clean">
-        <li>No free tier. Paid plans only; pricing to be announced.</li>
-        <li>7-day free trial of the lowest tier.</li>
-        <li>A payment method is required up front to start the trial.</li>
-        <li>During the trial: up to 25 saved recipes and a daily limit on nutrition lookups.</li>
+    <h2>How it works with your AI</h2>
+    <div class="how">
+      <div class="step"><div class="n">1</div><h3>Connect</h3><p>Add Recipe Box to Claude, ChatGPT, or Grok as an MCP connector.</p></div>
+      <div class="step"><div class="n">2</div><h3>Just ask</h3><p>“Save this recipe,” “double it for 8,” or “what’s the protein per serving?”</p></div>
+      <div class="step"><div class="n">3</div><h3>Nutrition, calculated</h3><p>Nutrition facts come from USDA data, recalculated when you scale.</p></div>
+      <div class="step"><div class="n">4</div><h3>See &amp; edit</h3><p>Check and edit everything your AI did in the web app or Android app.</p></div>
+    </div>
+
+    <div class="trial">
+      <h2>Try it free for 7 days</h2>
+      <ul>
+        <li>7-day free trial of the lowest tier. No free tier.</li>
+        <li>Payment method required up front to start the trial.</li>
+        <li>Trial includes up to 25 saved recipes and a daily nutrition-lookup limit.</li>
+        <li>Prices to be announced.</li>
       </ul>
-    </section>
+    </div>
 
-    <section>
-      <h2>App preview</h2>
-      <div id="app-root">The app interface will appear here during testing.</div>
-    </section>
-
-    <footer>Test page · not yet public · <a href="/">vincentcicchetti.com</a></footer>
+    <footer>Recipe Box (working title) · private test page · not yet public</footer>
   </main>
+  <script>
+    let s = 4;
+    function fmt(n){ return (Math.round(n*100)/100).toString(); }
+    function scale(d){
+      s = Math.min(24, Math.max(1, s + d));
+      document.getElementById('sv').textContent = s;
+      document.getElementById('sv2').textContent = s;
+      document.querySelectorAll('#ing [data-q]').forEach(el => el.textContent = fmt(el.dataset.q * s / 4));
+    }
+  </script>
 </body>
 </html>
