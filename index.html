@@ -51,9 +51,10 @@
       .hero{grid-template-columns:1fr;gap:24px;padding:36px 0 32px;text-align:left}.hero img{width:150px;height:180px}
       section{padding:44px 0 4px}.project{padding:18px}.gallery{grid-template-columns:1fr 1fr}.gallery img{height:130px}
       #history .jobs{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
-    .gallery-stell{display:flex;flex-direction:column;gap:10px} .gallery-stell .row{display:flex;gap:10px} .gallery-stell img{height:auto;min-width:0;object-fit:contain;background:none}
+    .gallery-stell{display:flex;flex-direction:column;gap:12px;width:min(1500px,calc(100vw - 48px));position:relative;left:50%;transform:translateX(-50%)}
+    .gallery-stell .row{display:flex;gap:12px} .gallery-stell img{height:auto;min-width:0;object-fit:contain;background:none}
     .gallery-stell .w{flex:1.52 1 0} .gallery-stell .r{flex:1.33 1 0} .gallery-stell .t1{flex:0.66 1 0} .gallery-stell .t2{flex:0.75 1 0}
-    @media (max-width:760px){.gallery-stell .row{flex-wrap:wrap}.gallery-stell .w{flex:1 1 100%}.gallery-stell .t1,.gallery-stell .t2{flex:1 1 40%}.gallery-stell img{height:auto}}
+    @media (max-width:760px){.gallery-stell{width:calc(100vw - 32px)}.gallery-stell .row{flex-wrap:wrap}.gallery-stell .w,.gallery-stell .r{flex:1 1 100%}.gallery-stell .t1,.gallery-stell .t2{flex:1 1 40%}}
   </style>
 </head>
 <body>
