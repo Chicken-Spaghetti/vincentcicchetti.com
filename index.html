@@ -51,9 +51,9 @@
       .hero{grid-template-columns:1fr;gap:24px;padding:36px 0 32px;text-align:left}.hero img{width:150px;height:180px}
       section{padding:44px 0 4px}.project{padding:18px}.gallery{grid-template-columns:1fr 1fr}.gallery img{height:130px}
       #history .jobs{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
-    .gallery-stell{display:flex;gap:10px} .gallery-stell img{height:auto;min-width:0;object-fit:contain;background:none}
-    .gallery-stell img:nth-child(1),.gallery-stell img:nth-child(2){flex:1.52 1 0} .gallery-stell img:nth-child(3){flex:0.66 1 0}
-    @media (max-width:760px){.gallery-stell{flex-wrap:wrap}.gallery-stell img:nth-child(1),.gallery-stell img:nth-child(2){flex:1 1 100%}.gallery-stell img:nth-child(3){flex:0 0 60%;margin:0 auto}.gallery-stell img{height:auto}}
+    .gallery-stell{display:flex;flex-direction:column;gap:10px} .gallery-stell .row{display:flex;gap:10px} .gallery-stell img{height:auto;min-width:0;object-fit:contain;background:none}
+    .gallery-stell .w{flex:1.52 1 0} .gallery-stell .t1{flex:0.66 1 0} .gallery-stell .t2{flex:0.75 1 0}
+    @media (max-width:760px){.gallery-stell .row{flex-wrap:wrap}.gallery-stell .w{flex:1 1 100%}.gallery-stell .t1,.gallery-stell .t2{flex:1 1 40%}.gallery-stell img{height:auto}}
   </style>
 </head>
 <body>
@@ -107,9 +107,15 @@
         <li>Backyard sump pump to keep the laundry room dry in hurricane season</li>
       </ul>
       <div class="gallery gallery-stell">
-        <img src="stell-front.jpg" alt="Stell Drive exterior">
-        <img src="stell-kitchen.jpg" alt="Stell Drive kitchen">
-        <img src="stell-bath.jpg" alt="Stell Drive bath">
+        <div class="row">
+          <img class="w" src="stell-front.jpg" alt="Stell Drive exterior">
+          <img class="w" src="stell-rear.jpg" alt="Stell Drive rear of the house and backyard">
+        </div>
+        <div class="row">
+          <img class="w" src="stell-kitchen.jpg" alt="Stell Drive kitchen">
+          <img class="t1" src="stell-bath.jpg" alt="Stell Drive bath">
+          <img class="t2" src="stell-bath2.jpg" alt="Stell Drive second bathroom with tub, toilet and vanity">
+        </div>
       </div>
       </article>
 
