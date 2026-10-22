@@ -55,15 +55,16 @@
     .carousel .track{display:flex;height:100%;margin:0;padding:0;list-style:none;transition:transform .45s ease;touch-action:pan-y}
     .carousel .slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center}
     .carousel .slide img{width:100%;height:100%;object-fit:contain;display:block}
-    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:34px;line-height:44px;cursor:pointer;z-index:2}
+    .carousel .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;padding:0;line-height:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
     .carousel .nav:hover,.carousel .nav:focus-visible{background:rgba(0,0,0,.8)} .carousel .prev{left:12px}.carousel .next{right:12px}
     .carousel .meta{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px;font-size:14px;color:#555}
     .carousel .dots{display:flex;gap:8px}.carousel .dots button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:#c9c3b8;cursor:pointer}
     .carousel .dots button[aria-current="true"]{background:#333}
-    @media (max-width:760px){.carousel{width:100vw}.carousel .frame{border-radius:0;aspect-ratio:4/3}.carousel .nav{width:42px;height:42px;font-size:30px;line-height:38px}}
+    @media (max-width:760px){.carousel{width:100vw}.carousel .frame{border-radius:0;aspect-ratio:4/3}.carousel .nav{width:42px;height:42px}}
     @media (prefers-reduced-motion:reduce){.carousel .track{transition:none}}
     #car-fairway .frame{aspect-ratio:1026/690;max-height:none;background:#f4f1ea}
     @media (max-width:760px){#car-fairway .frame{aspect-ratio:1026/690}}
+    .carousel .nav svg{display:block;pointer-events:none}
   </style>
 </head>
 <body>
@@ -118,8 +119,8 @@
       </ul>
       <div class="carousel" id="car-stell" role="region" aria-roledescription="carousel" aria-label="New Port Richey remodel photos" tabindex="0">
         <div class="frame"><ul class="track"><li class="slide"><img src="stell-front.jpg" alt="Stell Drive exterior" decoding="async"></li><li class="slide"><img src="stell-rear.jpg" alt="Stell Drive rear of the house and backyard" loading="lazy" decoding="async"></li><li class="slide"><img src="stell-kitchen.jpg" alt="Stell Drive kitchen" loading="lazy" decoding="async"></li><li class="slide"><img src="stell-bath.jpg" alt="Stell Drive bath" loading="lazy" decoding="async"></li><li class="slide"><img src="stell-bath2.jpg" alt="Stell Drive second bathroom with tub, toilet and vanity" loading="lazy" decoding="async"></li></ul>
-        <button class="nav prev" type="button" aria-label="Previous photo">&#8249;</button>
-        <button class="nav next" type="button" aria-label="Next photo">&#8250;</button></div>
+        <button class="nav prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="48%" height="48%" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" width="48%" height="48%" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
         <div class="meta"><span class="count" aria-live="polite">1 / 5</span><div class="dots"></div></div>
       </div>
       </article>
@@ -129,8 +130,8 @@
       <p>Fairway was simpler. Paint, floors, countertops. Then we enclosed the back porch on a raised wood platform — concrete like Stell would have cost too much — and built a family room and a bathroom. Those are the rooms with the sliding barn doors.</p>
       <div class="carousel" id="car-fairway" role="region" aria-roledescription="carousel" aria-label="Leesburg remodel photos" tabindex="0">
         <div class="frame"><ul class="track"><li class="slide"><img src="fairway-front.jpg" alt="Fairway Circle exterior" decoding="async"></li><li class="slide"><img src="fairway-fireplace.jpg" alt="Living room and fireplace" loading="lazy" decoding="async"></li><li class="slide"><img src="fairway-kitchen.jpg" alt="Fairway kitchen" loading="lazy" decoding="async"></li><li class="slide"><img src="fairway-barn.jpg" alt="Sliding barn door on the added rooms" loading="lazy" decoding="async"></li><li class="slide"><img src="fairway-shower.jpg" alt="Added bathroom" loading="lazy" decoding="async"></li></ul>
-        <button class="nav prev" type="button" aria-label="Previous photo">&#8249;</button>
-        <button class="nav next" type="button" aria-label="Next photo">&#8250;</button></div>
+        <button class="nav prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="48%" height="48%" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" width="48%" height="48%" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
         <div class="meta"><span class="count" aria-live="polite">1 / 5</span><div class="dots"></div></div>
       </div>
       </article>
